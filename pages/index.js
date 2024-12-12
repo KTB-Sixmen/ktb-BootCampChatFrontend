@@ -129,7 +129,7 @@ const Login = () => {
       const redirectUrl = router.query.redirect || "/chat-rooms";
       router.push(redirectUrl);
     } catch (err) {
-      console.error("Login error:", err);
+      // console.error("Login error:", err);
 
       if (err.isAxiosError && err.response?.status === 500) {
         setError({

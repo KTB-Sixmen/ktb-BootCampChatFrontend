@@ -133,8 +133,15 @@ const Register = () => {
     try {
       const { name, email, password } = formData;
       // 회원가입
-      await authService.register({ name, email, password });
-
+      const { response, error } = await authService.register({
+        name,
+        email,
+        password,
+      });
+      console.log(response);
+      if (!response) {
+        throw error;
+      }
       // 바로 로그인 처리
       await authService.login({ email, password });
 
@@ -147,8 +154,8 @@ const Register = () => {
         router.push("/chat-rooms");
       }, 10000);
     } catch (err) {
-      console.error("Registration error:", err);
-
+      console.log(err);
+      // console.error("Registration error:", err);
       if (err.response?.data?.errors) {
         setErrors(err.response.data.errors);
       } else if (err.response?.data?.message) {
