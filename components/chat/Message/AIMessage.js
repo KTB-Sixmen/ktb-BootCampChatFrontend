@@ -36,10 +36,43 @@ const AIMessage = ({
         ? "Wayne AI"
         : msg.aiType === "consultingAI"
         ? "Consulting AI"
+        : msg.aiType === "refuteAI"
+        ? "반박AI"
+        : msg.aiType === "agentB"
+        ? "언어유희왕"
+        : msg.aiType === "hankangAI"
+        ? "한강AI"
+        : msg.aiType === "spellingAI"
+        ? "새종데왕AI"
         : "용가리",
-    email: msg.aiType === "wayneAI" ? "ai@wayne.ai" : "ai@consulting.ai",
+    email:
+      msg.aiType === "wayneAI"
+        ? "ai@wayne.ai"
+        : msg.aiType === "consultingAI"
+        ? "ai@consulting.ai"
+        : msg.aiType === "refuteAI"
+        ? "ai@refuteAI.ai"
+        : msg.aiType === "agentB"
+        ? "ai@agentB.ai"
+        : msg.aiType === "hankangAI"
+        ? "ai@hankangAI.ai"
+        : msg.aiType === "spellingAI"
+        ? "ai@spelling.ai"
+        : "ai@dydrkfl.com",
     avatarInitial:
-      msg.aiType === "wayneAI" ? "W" : msg.aiType === "wayneAI" ? "C" : "용",
+      msg.aiType === "wayneAI" ? (
+        "W"
+      ) : msg.aiType === "consultingAI" ? (
+        "C"
+      ) : msg.aiType === "refuteAI" ? (
+        "A"
+      ) : msg.aiType === "agentB" ? (
+        "B"
+      ) : msg.aiType === "hankangAI" ? (
+        "H"
+      ) : (
+        <img src="images/asd.png" className="w-50" />
+      ),
   };
 
   const renderContent = () => {

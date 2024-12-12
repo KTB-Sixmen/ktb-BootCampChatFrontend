@@ -77,7 +77,12 @@ const MentionDropdown = ({
 
   const getAvatarContent = useCallback((user) => {
     if (user.isAI) {
-      return user.name === "wayneAI" ? "W" : "C";
+      if (user.name === "wayneAI") return "W";
+      if (user.name === "consultingAI") return "C";
+      if (user.name === "refuteAI") return "A";
+      if (user.name === "agentB") return "B";
+      if (user.name === "hankangAI") return "H";
+      return <img src="/images/asd.png" className="w-50" />;
     }
     return user.name.charAt(0).toUpperCase();
   }, []);
@@ -129,8 +134,16 @@ const MentionDropdown = ({
                   ? user.name === "wayneAI"
                     ? "Wayne AI"
                     : user.name === "consultingAI"
-                    ? "'Consulting AI'"
-                    : "용가리"
+                    ? "Consulting AI"
+                    : user.name === "refuteAI"
+                    ? "반박AI"
+                    : user.name === "agentB"
+                    ? "언어유희왕"
+                    : user.name === "hankangAI"
+                    ? "한강AI"
+                    : // : user.name === "spellingAI"
+                      // ? "새종데왕 AI"
+                      "새종데왕 AI"
                   : user.name}
               </span>
               {renderUserBadge(user)}
